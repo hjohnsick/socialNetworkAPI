@@ -14,10 +14,11 @@ router.route("/").get(getAllThoughts);
 
 router.route("/:userId").post(addThought);
 
+router.route("/:userId/:thoughtId").delete(deleteThought);
+
 router.route("/:id").get(getThoughtById).put(updateThought);
 
-router.route("/:userId/:thoughtId").put(addReaction).delete(deleteThought);
-router
-  .route("/:userId/:thoughtId/:reactionId/reactions")
-  .delete(removeReaction);
+router.route("/:thoughtId/reactions").put(addReaction);
+
+router.route("/:thoughtId/:reactionId/reactions").delete(removeReaction);
 module.exports = router;
